@@ -1,0 +1,50 @@
+---
+layout: default
+---
+
+<main
+  class="grid grid-cols-2 gap-4"
+  x-init="page = 0"
+  x-data="{ page: parseInt(location.hash.substring(1)) }"
+  @hashchange.window="page = parseInt(location.hash.substring(1))"
+>
+  <nav class="flex flex-col h-screen sticky top-0 box-border py-20 pl-20">
+    <header class="mb-8 font-bold text-lg">Notes</header>
+    <ul class="mb-4">
+      {% for n in api.notes %}
+      <li x-show="page === {{ (loop.index0 / 5) | round(0, 'floor') }}">
+        <a class="hover:underline" href="/{{ n.path | slug }}">{{ n.title }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+    <div class="flex-grow">
+      <a
+        class="underline font-semibold mr-4"
+        x-bind:href="'#' + (page - 1)"
+        x-show="page > 0"
+        >Back</a
+      >
+      <a
+        class="underline font-semibold"
+        x-bind:href="'#' + (page + 1)"
+        x-show="page < {{ (api.notes.length / 5) | round(0, 'floor') }}"
+        >More</a
+      >
+    </div>
+    <footer>
+      <ul>
+        {% for name, link in metadata.links %}
+        <li>
+          <a class="hover:underline" href="{{ link }}">{{ name }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </footer>
+  </nav>
+
+  <article class="py-20 pr-20">
+    <section class="prose dark:prose-invert prose-lg">
+      {{ content | safe }}
+    </section>
+  </article>
+</main>

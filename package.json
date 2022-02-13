@@ -1,0 +1,35 @@
+{
+  "name": "co11ection",
+  "version": "1.0.0",
+  "description": "A simple blog running off CollectedNotes.com",
+  "scripts": {
+    "start": "run-p start:*",
+    "start:eleventy": "eleventy --serve",
+    "start:postcss": "postcss src/styles/*.css --dir _site --watch",
+    "build": "run-s clean build:eleventy build:postcss",
+    "build:eleventy": "cross-env ELEVENTY_PRODUCTION=true eleventy",
+    "build:postcss": "cross-env NODE_ENV=production postcss src/styles/*.css --dir _site",
+    "clean": "rimraf _site"
+  },
+  "keywords": [
+    "elenventy",
+    "starter"
+  ],
+  "author": "Cam MacFarland",
+  "license": "Unlicense",
+  "devDependencies": {
+    "@11ty/eleventy": "^1.0.0",
+    "@tailwindcss/typography": "^0.5.1",
+    "autoprefixer": "^10.4.2",
+    "axios": "^0.25.0",
+    "cross-env": "^7.0.3",
+    "cssnano": "^5.0.17",
+    "html-minifier": "^4.0.0",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.6",
+    "postcss-cli": "^9.1.0",
+    "postcss-nested": "^5.0.6",
+    "rimraf": "^3.0.2",
+    "tailwindcss": "^3.0.22"
+  }
+}
