@@ -1,9 +1,9 @@
-const fs = require('fs');
-const htmlmin = require('html-minifier');
+const fs = require("fs");
+const htmlmin = require("html-minifier");
 
 module.exports = function (eleventyConfig) {
   if (process.env.ELEVENTY_PRODUCTION) {
-    eleventyConfig.addTransform('htmlmin', htmlminTransform);
+    eleventyConfig.addTransform("htmlmin", htmlminTransform);
   } else {
     eleventyConfig.setBrowserSyncConfig({
       callbacks: { ready: browserSyncReady },
@@ -11,27 +11,27 @@ module.exports = function (eleventyConfig) {
   }
 
   // Passthrough
-  eleventyConfig.addPassthroughCopy({ 'src/static': '.' });
+  eleventyConfig.addPassthroughCopy({ "src/static": "." });
 
   // Watch targets
-  eleventyConfig.addWatchTarget('./src/styles/');
+  eleventyConfig.addWatchTarget("./src/styles/");
 
-  var pathPrefix = '';
+  var pathPrefix = "";
   if (process.env.GITHUB_REPOSITORY) {
-    pathPrefix = process.env.GITHUB_REPOSITORY.split('/')[1];
+    pathPrefix = process.env.GITHUB_REPOSITORY.split("/")[1];
   }
 
   return {
     dir: {
-      input: 'src',
+      input: "src",
     },
     pathPrefix,
   };
 };
 
 function browserSyncReady(err, bs) {
-  bs.addMiddleware('*', (req, res) => {
-    const content_404 = fs.readFileSync('_site/404.html');
+  bs.addMiddleware("*", (req, res) => {
+    const content_404 = fs.readFileSync("_site/404.html");
     // Provides the 404 content without redirect.
     res.write(content_404);
     // Add 404 http status code in request header.
@@ -42,7 +42,7 @@ function browserSyncReady(err, bs) {
 }
 
 function htmlminTransform(content, outputPath) {
-  if (outputPath.endsWith('.html')) {
+  if (outputPath.endsWith(".html")) {
     let minified = htmlmin.minify(content, {
       useShortDoctype: true,
       removeComments: true,
