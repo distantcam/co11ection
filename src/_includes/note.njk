@@ -1,45 +1,76 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- https://github.com/joshbuchea/HEAD -->
 
-<main
-  class="grid grid-cols-2 gap-4"
-  x-init="page = {{ (pagination.pageNumber / 5) | round(0, 'floor') }}"
-  x-data="{ page: parseInt(location.hash.substring(1)) }"
-  @hashchange.window="page = parseInt(location.hash.substring(1))"
->
-  <nav class="box-border sticky top-0 flex flex-col h-screen py-20 pl-20">
-    <header class="mb-8 text-lg font-bold">Notes</header>
-    <ul class="mb-4">
-      {% for n in api.notes %}
-      <li x-show="page === {{ (loop.index0 / 5) | round(0, 'floor') }}">
-        {%- set link = '/' + n.path %}
-        <a class="hover:underline" href="{{ link | url }}">{{ n.title }}</a>
-      </li>
-      {% endfor %}
-    </ul>
-    <div class="flex-grow">
-      <a class="mr-4 font-semibold underline" x-bind:href="'#' + (page - 1)" x-show="page > 0">Back</a>
-      <a
-        class="font-semibold underline"
-        x-bind:href="'#' + (page + 1)"
-        x-show="page < {{ (api.notes.length / 5) | round(0, 'floor') }}"
-      >
-        More
-      </a>
-    </div>
-    <footer>
-      <ul>
-        {% for name, link in metadata.links %}
-        <li>
-          <a class="hover:underline" href="{{ link }}">{{ name }}</a>
-        </li>
-        {% endfor %}
-      </ul>
-    </footer>
-  </nav>
+    <!-- Recommended -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <article class="py-20 pr-20">
-    <section class="prose prose-lg dark:prose-invert">{{ content | safe }}</section>
-  </article>
-</main>
+    <!-- Meta -->
+    <meta name="description" content="{{ api.site.headline }}" />
+    <meta name="generator" content="11ty" />
+
+    <!-- Icons -->
+    <!-- https://favicon.io/ -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ '/apple-touch-icon.png' | url }}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ '/favicon-32x32.png' | url }}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ '/favicon-16x16.png' | url }}" />
+    <link rel="manifest" href="{{ '/site.webmanifest' | url }}" />
+
+    <title>{{ title or api.site.name }}</title>
+
+    <link rel="stylesheet" href="{{ '/site.css' | url }}" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Lora&family=Open+Sans&display=swap"
+      rel="preload"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  </head>
+  <body class="font-sans text-lg font-light text-gray-800 bg-gray-100 dark:bg-gray-800 dark:text-gray-200">
+    <main
+      class="grid grid-cols-2 gap-4"
+      x-init="page = {{ (pagination.pageNumber / 5) | round(0, 'floor') }}"
+      x-data="{ page: parseInt(location.hash.substring(1)) }"
+      @hashchange.window="page = parseInt(location.hash.substring(1))"
+    >
+      <nav class="box-border sticky top-0 flex flex-col h-screen py-20 pl-20">
+        <header class="mb-8 text-lg font-bold">Notes</header>
+        <ul class="mb-4">
+          {% for n in api.notes %}
+          <li x-show="page === {{ (loop.index0 / 5) | round(0, 'floor') }}">
+            {%- set link = '/' + n.path %}
+            <a class="hover:underline" href="{{ link | url }}">{{ n.title }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+        <div class="flex-grow">
+          <a class="mr-4 font-semibold underline" x-bind:href="'#' + (page - 1)" x-show="page > 0">Back</a>
+          <a
+            class="font-semibold underline"
+            x-bind:href="'#' + (page + 1)"
+            x-show="page < {{ (api.notes.length / 5) | round(0, 'floor') }}"
+          >More</a>
+        </div>
+        <footer>
+          <ul>
+            {% for name, link in metadata.links %}
+            <li>
+              <a class="hover:underline" href="{{ link }}">{{ name }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </footer>
+      </nav>
+
+      <article class="py-20 pr-20">
+        <section class="prose prose-lg dark:prose-invert">{{ content | safe }}</section>
+      </article>
+    </main>
+
+  </body>
+</html>
