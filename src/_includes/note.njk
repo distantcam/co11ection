@@ -39,30 +39,23 @@
 
     <aside
       class="w-full p-4 mx-auto sm:p-8 max-w-prose xl:py-32 xl:pl-32 md:box-border md:sticky md:top-0 md:flex md:justify-between md:flex-col md:h-screen md:col-start-1 md:row-start-1 md:m-0 md:ml-auto md:py-16 md:pl-16 md:pr-0"
-      x-init="page = {{ (pagination.pageNumber / 5) | round(0, 'floor') }}"
-      x-data="{ page: parseInt(location.hash.substring(1)) }"
-      @hashchange.window="page = parseInt(location.hash.substring(1))"
     >
-      <nav class="">
+      <nav x-data="loadPage()">
         <h1 class="text-lg font-bold">Notes</h1>
         <ul class="my-4">
-          {% for n in api.notes %}
-          <li x-show="page === {{ (loop.index0 / 5) | round(0, 'floor') }}">
-            {%- set link = '/' + n.path %}
-            <a class="hover:underline" href="{{ link | url }}">{{ n.title }}</a>
-          </li>
-          {% endfor %}
+          <template x-for="note in pageNotes" :key="note.id">
+            <li>
+              <a class="hover:underline" :href="note.link" x-text="note.title"></a>
+            </li>
+          </template>
         </ul>
 
-        <div class="grid grid-cols-2">
-          <a class="font-semibold underline" x-bind:href="'#' + (page - 1)" x-show="page > 0">Back</a>
-          <a
-            class="col-start-2 font-semibold underline"
-            x-bind:href="'#' + (page + 1)"
-            x-show="page < {{ (api.notes.length / 5) | round(0, 'floor') }}"
-          >More</a>
+        <div>
+          <button class="mr-2" :class="{ 'font-semibold underline' : pageNumber > 0 }" :disabled="pageNumber <= 0" x-on:click="prevPage">Back</button>
+          <button :class="{ 'font-semibold underline' : pageNumber < pageCount }" :disabled="pageNumber >= pageCount" x-on:click="nextPage">More</button>
         </div>
       </nav>
+
       <footer class="mt-4">
         <ul>
           {% for name, link in metadata.links %}
@@ -73,6 +66,43 @@
         </ul>
       </footer>
     </aside>
+
+    <script>
+      var notes = [
+      {%- for n in api.notes %}
+      {
+        {%- set link = '/' + n.path %}
+        id: '{{ loop.index0 }}',
+        link: '{{ link | url }}',
+        title: '{{ n.title }}',
+      },
+      {%- endfor %}
+      ];
+      function loadPage()
+      {
+        return {
+          pageNumber: {{ (pagination.pageNumber / 5) | round(0, 'floor') }},
+          size: 5,
+          pageCount: {{ (api.notes.length / 5) | round(0, 'floor') }},
+          notes: notes,
+
+          get pageNotes() {
+            const start = this.pageNumber * this.size;
+            const end = start + this.size;
+
+            return this.notes.slice(start, end);
+          },
+
+          nextPage() {
+            this.pageNumber++;
+          },
+
+          prevPage() {
+            this.pageNumber--;
+          },
+        };
+      }
+    </script>
 
   </body>
 </html>
