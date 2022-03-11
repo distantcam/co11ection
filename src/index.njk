@@ -7,9 +7,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Elements -->
-    <meta charset="utf-8" />
-
     <!-- Meta -->
     <meta name="description" content="{{ metadata.description }}" />
     <meta name="generator" content="11ty" />
@@ -20,6 +17,8 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{ '/favicon-32x32.png' | url }}" />
     <link rel="icon" type="image/png" sizes="16x16" href="{{ '/favicon-16x16.png' | url }}" />
     <link rel="manifest" href="{{ '/site.webmanifest' | url }}" />
+
+    <title>{{ api.site.name }}</title>
 
     {%- set redirect = '/' + api.notes[0].path + '/' %}
     <meta http-equiv="refresh" content="0; URL={{ redirect | url }}" />
