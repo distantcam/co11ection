@@ -1,6 +1,8 @@
 {
   "username": "blog",
   "links": {
-    "github": "https://github.com/distantcam/co11ection"
+    "github": "https://github.com/distantcam/co11ection/",
+    "colllected notes": "https://collectednotes.com/",
+    "eleventy": "https://www.11ty.dev/"
   }
 }

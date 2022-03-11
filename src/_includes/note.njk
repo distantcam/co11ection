@@ -20,8 +20,6 @@
 
     <title>{{ title or api.site.name }}</title>
 
-    <link rel="stylesheet" href="{{ '/site.css' | url }}" />
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -30,6 +28,8 @@
       as="style"
       onload="this.onload=null;this.rel='stylesheet'"
     />
+
+    <link rel="stylesheet" href="{{ '/site.css' | url }}" />
 
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   </head>
