@@ -4,11 +4,11 @@ layout: default
 
 <main
   class="grid grid-cols-2 gap-4"
-  x-init="page = 0"
+  x-init="page = {{ (pagination.pageNumber / 5) | round(0, 'floor') }}"
   x-data="{ page: parseInt(location.hash.substring(1)) }"
   @hashchange.window="page = parseInt(location.hash.substring(1))"
 >
-  <nav class="sticky top-0 box-border flex h-screen flex-col py-20 pl-20">
+  <nav class="box-border sticky top-0 flex flex-col h-screen py-20 pl-20">
     <header class="mb-8 text-lg font-bold">Notes</header>
     <ul class="mb-4">
       {% for n in api.notes %}
