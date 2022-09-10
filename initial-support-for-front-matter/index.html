@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Simply your thoughts."><meta name="generator" content="Eleventy"><link rel="apple-touch-icon" sizes="180x180" href="/co11ection/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/co11ection/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/co11ection/favicon-16x16.png"><link rel="manifest" href="/co11ection/site.webmanifest"><title>Initial support for front matter</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Lora&family=Open+Sans&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"><link rel="stylesheet" href="/co11ection/site.css"><script defer="defer" src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script></head><body class="font-sans text-sm font-light text-gray-800 bg-gray-100 lg:text-lg sm:text-base dark:bg-gray-800 dark:text-gray-200 md:grid md:grid-cols-2 md:gap-4"><main class="p-4 mx-auto prose-sm prose sm:p-8 xl:py-16 xl:pr-16 sm:prose-base dark:prose-invert lg:prose-lg md:col-start-2 md:m-0 md:pl-0"><hr><h2>title: Initial support for front matter tag: front matter, markdown, blogging image: <img src="https://photos.collectednotes.com/photos/14/5c93e0a5-8288-4b12-b1e4-e871f39a19fa" alt="frontmatter"></h2><h1>Initial support for front matter</h1><p><a href="https://jekyllrb.com/docs/front-matter/">Front matter</a> allows people to embed metadata information inside notes. One common use case is to use Collected Notes as a CMS for posts containing extra information (like tags, custom layouts, or additional metadata).</p><h3>Custom paths</h3><p>Front matter allows you to customize the path for a note (instead of using the default path generated from the note title).</p><p>Here’s one example of a note containing a custom path, instead of the generated one: <a href="https://collectednotes.com/alejandro/some-custom-path">https://collectednotes.com/alejandro/some-custom-path</a></p><pre><code class="language-markdown">---
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Simply your thoughts."><meta name="generator" content="Eleventy"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="manifest" href="/site.webmanifest"><title>Initial support for front matter</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Lora&family=Open+Sans&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"><link rel="stylesheet" href="/site.css"><script defer="defer" src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script></head><body class="font-sans text-sm font-light text-gray-800 bg-gray-100 lg:text-lg sm:text-base dark:bg-gray-800 dark:text-gray-200 md:grid md:grid-cols-2 md:gap-4"><main class="p-4 mx-auto prose-sm prose sm:p-8 xl:py-16 xl:pr-16 sm:prose-base dark:prose-invert lg:prose-lg md:col-start-2 md:m-0 md:pl-0"><hr><h2>title: Initial support for front matter tag: front matter, markdown, blogging image: <img src="https://photos.collectednotes.com/photos/14/5c93e0a5-8288-4b12-b1e4-e871f39a19fa" alt="frontmatter"></h2><h1>Initial support for front matter</h1><p><a href="https://jekyllrb.com/docs/front-matter/">Front matter</a> allows people to embed metadata information inside notes. One common use case is to use Collected Notes as a CMS for posts containing extra information (like tags, custom layouts, or additional metadata).</p><h3>Custom paths</h3><p>Front matter allows you to customize the path for a note (instead of using the default path generated from the note title).</p><p>Here’s one example of a note containing a custom path, instead of the generated one: <a href="https://collectednotes.com/alejandro/some-custom-path">https://collectednotes.com/alejandro/some-custom-path</a></p><pre><code class="language-markdown">---
 path: some-custom-path
 ---
 
@@ -18,157 +18,157 @@ image: ![frontmatter](https://photos.collectednotes.com/photos/14/5c93e0a5-8288-
 </code></pre><h3>What’s coming up</h3><p>We’re about to launch support for external static websites powered by Collected Notes. I think this will be a huge opportunity, allowing people to create custom websites with the convenience of updating them directly from Collected Notes. No re-deploy necessary.</p><p>Our first integration will work with <a href="https://vercel.com">Vercel</a>, updates soon!</p></main><aside class="w-full p-4 mx-auto sm:p-8 max-w-prose xl:py-32 xl:pl-32 md:box-border md:sticky md:top-0 md:flex md:justify-between md:flex-col md:h-screen md:col-start-1 md:row-start-1 md:m-0 md:ml-auto md:py-16 md:pl-16 md:pr-0"><nav x-data="loadPage()"><h1 class="text-lg font-bold">Notes</h1><ul class="my-4"><template x-for="note in pageNotes" :key="note.id"><li><a class="hover:underline" :href="note.link" x-text="note.title"></a></li></template></ul><div><button class="mr-2" :class="{ 'font-semibold underline' : pageNumber > 0 }" :disabled="pageNumber <= 0" x-on:click="prevPage">Back</button> <button :class="{ 'font-semibold underline' : pageNumber < pageCount }" :disabled="pageNumber >= pageCount" x-on:click="nextPage">More</button></div></nav><footer class="mt-4"><ul><li><a class="hover:underline" href="https://github.com/distantcam/co11ection/">github</a></li><li><a class="hover:underline" href="https://collectednotes.com/">colllected notes</a></li><li><a class="hover:underline" href="https://www.11ty.dev/">eleventy</a></li></ul></footer></aside><script>var notes = [
       {
         id: '0',
-        link: '/co11ection/zettelkasten',
+        link: '/zettelkasten',
         title: 'Rethinking the bi-directional linking mobile interface',
       },
       {
         id: '1',
-        link: '/co11ection/zapier',
+        link: '/zapier',
         title: 'Zapier',
       },
       {
         id: '2',
-        link: '/co11ection/roadmap',
+        link: '/roadmap',
         title: 'Roadmap',
       },
       {
         id: '3',
-        link: '/co11ection/new-format-toolbar',
+        link: '/new-format-toolbar',
         title: 'New format toolbar',
       },
       {
         id: '4',
-        link: '/co11ection/static-websites',
+        link: '/static-websites',
         title: 'Static Websites',
       },
       {
         id: '5',
-        link: '/co11ection/initial-support-for-front-matter',
+        link: '/initial-support-for-front-matter',
         title: 'Initial support for front matter',
       },
       {
         id: '6',
-        link: '/co11ection/webhooks',
+        link: '/webhooks',
         title: 'Webhooks',
       },
       {
         id: '7',
-        link: '/co11ection/reorder-your-notes',
+        link: '/reorder-your-notes',
         title: 'Reorder your notes',
       },
       {
         id: '8',
-        link: '/co11ection/1-3',
+        link: '/1-3',
         title: '1.3',
       },
       {
         id: '9',
-        link: '/co11ection/interesting-cool-projects',
+        link: '/interesting-cool-projects',
         title: 'Interesting &amp; cool projects',
       },
       {
         id: '10',
-        link: '/co11ection/changelog',
+        link: '/changelog',
         title: 'Changelog',
       },
       {
         id: '11',
-        link: '/co11ection/you-can-now-upload-images-on-web',
+        link: '/you-can-now-upload-images-on-web',
         title: 'You can now upload images on web',
       },
       {
         id: '12',
-        link: '/co11ection/support-for-tweets',
+        link: '/support-for-tweets',
         title: 'Support for Tweets',
       },
       {
         id: '13',
-        link: '/co11ection/custom-domain-names',
+        link: '/custom-domain-names',
         title: 'Custom domain names',
       },
       {
         id: '14',
-        link: '/co11ection/todo-list',
+        link: '/todo-list',
         title: 'Todo list',
       },
       {
         id: '15',
-        link: '/co11ection/you-can-publish-your-notes-as-tweets-automatically',
+        link: '/you-can-publish-your-notes-as-tweets-automatically',
         title: 'You can publish your notes as tweets  automatically',
       },
       {
         id: '16',
-        link: '/co11ection/support-for-youtube',
+        link: '/support-for-youtube',
         title: 'Support for YouTube',
       },
       {
         id: '17',
-        link: '/co11ection/improving-sharing-on-social-media',
+        link: '/improving-sharing-on-social-media',
         title: 'Improving sharing on social media',
       },
       {
         id: '18',
-        link: '/co11ection/support-for-pencil-kit',
+        link: '/support-for-pencil-kit',
         title: 'Support for Pencil Kit!',
       },
       {
         id: '19',
-        link: '/co11ection/product-hunt',
+        link: '/product-hunt',
         title: 'Product Hunt',
       },
       {
         id: '20',
-        link: '/co11ection/apps',
+        link: '/apps',
         title: 'Apps',
       },
       {
         id: '21',
-        link: '/co11ection/api',
+        link: '/api',
         title: 'API',
       },
       {
         id: '22',
-        link: '/co11ection/premium',
+        link: '/premium',
         title: '⚡️ Premium',
       },
       {
         id: '23',
-        link: '/co11ection/export-your-notes',
+        link: '/export-your-notes',
         title: 'Export your notes',
       },
       {
         id: '24',
-        link: '/co11ection/cookies',
+        link: '/cookies',
         title: 'Cookies',
       },
       {
         id: '25',
-        link: '/co11ection/legal',
+        link: '/legal',
         title: 'Legal',
       },
       {
         id: '26',
-        link: '/co11ection/a-tour-of-the-markdown-syntax',
+        link: '/a-tour-of-the-markdown-syntax',
         title: 'A tour of the Markdown syntax',
       },
       {
         id: '27',
-        link: '/co11ection/support-for-footnotes',
+        link: '/support-for-footnotes',
         title: 'Support for footnotes',
       },
       {
         id: '28',
-        link: '/co11ection/support-for-html-anchors-on-titles',
+        link: '/support-for-html-anchors-on-titles',
         title: 'Support for HTML anchors on titles',
       },
       {
         id: '29',
-        link: '/co11ection/terms',
+        link: '/terms',
         title: 'Terms',
       },
       {
         id: '30',
-        link: '/co11ection/privacy-policy',
+        link: '/privacy-policy',
         title: 'Privacy Policy',
       },
       ];
