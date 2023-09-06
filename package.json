@@ -19,7 +19,7 @@
   "license": "Unlicense",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
-    "@tailwindcss/typography": "^0.5.9",
+    "@tailwindcss/typography": "^0.5.10",
     "autoprefixer": "^10.4.15",
     "axios": "^1.5.0",
     "cross-env": "^7.0.3",
