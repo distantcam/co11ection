@@ -21,7 +21,7 @@
     "@11ty/eleventy": "^2.0.1",
     "@tailwindcss/typography": "^0.5.14",
     "autoprefixer": "^10.4.20",
-    "axios": "^1.7.4",
+    "axios": "^1.7.5",
     "cross-env": "^7.0.3",
     "cssnano": "^7.0.5",
     "html-minifier": "^4.0.0",
