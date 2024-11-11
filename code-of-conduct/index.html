@@ -1,103 +1,103 @@
 <!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Simply your thoughts."><meta name="generator" content="Eleventy"><link rel="apple-touch-icon" sizes="180x180" href="/co11ection/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/co11ection/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/co11ection/favicon-16x16.png"><link rel="manifest" href="/co11ection/site.webmanifest"><title>Code of Conduct</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Lora&family=Open+Sans&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"><link rel="stylesheet" href="/co11ection/site.css"><script defer="defer" src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script></head><body class="font-sans text-sm font-light text-gray-800 bg-gray-100 lg:text-lg sm:text-base dark:bg-gray-800 dark:text-gray-200 md:grid md:grid-cols-2 md:gap-4"><main class="p-4 mx-auto prose-sm prose sm:p-8 xl:py-16 xl:pr-16 sm:prose-base dark:prose-invert lg:prose-lg md:col-start-2 md:m-0 md:pl-0"><h1>Code of Conduct</h1><p>By using our platform, you agree to comply with the following guidelines. Failure to adhere to these rules will result in automated removal of content, and may lead to the platform being shut down.</p><h2>1. No Illegal Content</h2><ul><li>Any content that promotes, links to, or facilitates illegal activities is strictly prohibited.</li><li>Examples include but are not limited to:<ul><li>Content that violates copyright or intellectual property laws.</li><li>Links to illegal downloads, hacking tools, or pirated software.</li><li>Any other material that breaks local, national, or international laws.</li></ul></li></ul><h2>2. No Inappropriate or Offensive Content</h2><ul><li>Content that is offensive, defamatory, or harmful to others will not be tolerated.</li><li>This includes:<ul><li>Hate speech, racism, sexism, homophobia, transphobia, or discrimination of any kind.</li><li>Sexual or suggestive content, including pornography.</li><li>Harassment, bullying, or threats directed at individuals or groups.</li></ul></li></ul><h2>3. No Violence or Promotion of Harm</h2><ul><li>Content that promotes violence, harm, or encourages others to participate in violent activities is forbidden.</li><li>This includes:<ul><li>Incitement of physical violence or abuse.</li><li>Advocacy for self-harm or suicide.</li><li>Encouraging harmful behavior towards others.</li></ul></li></ul><h2>4. No Malware or Phishing Links</h2><ul><li>Users are prohibited from sharing content that could harm other users, such as:<ul><li>Links to malicious software or websites.</li><li>Phishing scams or attempts to collect personal information under false pretenses.</li></ul></li></ul><h2>5. Respect Intellectual Property</h2><ul><li>Respect the rights of creators by only sharing content that you have the legal right to distribute.</li><li>Do not plagiarize or steal others' work.</li></ul><h2>6. Personal Information and Privacy</h2><ul><li>Do not share personal information (yours or others’) without explicit consent.</li><li>Avoid doxxing (revealing private information) or any other form of privacy violation.</li></ul><h2>7. Consequences of Violations</h2><ul><li>Any content that violates this Code of Conduct will be automatically detected and removed by the platform's automated moderation system upon the first occurrence.</li></ul><h2>8. Reporting Violations</h2><ul><li>No manual reporting is needed, as the platform’s automated moderation system will continuously monitor and enforce these guidelines.</li></ul><h2>9. Updates to the Code of Conduct</h2><ul><li>This Code of Conduct may be updated periodically. Users are encouraged to review it regularly to stay informed about any changes.</li></ul><hr><p>By using this platform, you agree to follow these rules and to help maintain a respectful, safe, and legal environment for everyone. Violations will be automatically managed by the system without the need for user intervention.</p></main><aside class="w-full p-4 mx-auto sm:p-8 max-w-prose xl:py-32 xl:pl-32 md:box-border md:sticky md:top-0 md:flex md:justify-between md:flex-col md:h-screen md:col-start-1 md:row-start-1 md:m-0 md:ml-auto md:py-16 md:pl-16 md:pr-0"><nav x-data="loadPage()"><h1 class="text-lg font-bold">Notes</h1><ul class="my-4"><template x-for="note in pageNotes" :key="note.id"><li><a class="hover:underline" :href="note.link" x-text="note.title"></a></li></template></ul><div><button class="mr-2" :class="{ 'font-semibold underline' : pageNumber > 0 }" :disabled="pageNumber <= 0" x-on:click="prevPage">Back</button> <button :class="{ 'font-semibold underline' : pageNumber < pageCount }" :disabled="pageNumber >= pageCount" x-on:click="nextPage">More</button></div></nav><footer class="mt-4"><ul><li><a class="hover:underline" href="https://github.com/distantcam/co11ection/">github</a></li><li><a class="hover:underline" href="https://collectednotes.com/">colllected notes</a></li><li><a class="hover:underline" href="https://www.11ty.dev/">eleventy</a></li></ul></footer></aside><script>var notes = [
       {
         id: '0',
+        link: '/co11ection/create-a-static-website-using-collected-notes-as-your-cms',
+        title: 'Create a Static Website Using Collected Notes as Your CMS',
+      },
+      {
+        id: '1',
+        link: '/co11ection/markdown',
+        title: 'Markdown',
+      },
+      {
+        id: '2',
+        link: '/co11ection/tools',
+        title: 'Tools',
+      },
+      {
+        id: '3',
         link: '/co11ection/code-of-conduct',
         title: 'Code of Conduct',
       },
       {
-        id: '1',
-        link: '/co11ection/zettelkasten',
-        title: 'Rethinking the bi-directional linking mobile interface',
-      },
-      {
-        id: '2',
+        id: '4',
         link: '/co11ection/zapier',
         title: 'Zapier',
       },
       {
-        id: '3',
+        id: '5',
         link: '/co11ection/new-format-toolbar',
         title: 'New format toolbar',
       },
       {
-        id: '4',
+        id: '6',
         link: '/co11ection/static-websites',
         title: 'Static Websites',
       },
       {
-        id: '5',
+        id: '7',
         link: '/co11ection/initial-support-for-front-matter',
         title: 'Initial support for front matter',
       },
       {
-        id: '6',
+        id: '8',
         link: '/co11ection/webhooks',
         title: 'Webhooks',
       },
       {
-        id: '7',
+        id: '9',
         link: '/co11ection/reorder-your-notes',
         title: 'Reorder your notes',
       },
       {
-        id: '8',
+        id: '10',
         link: '/co11ection/1-3',
         title: '1.3',
       },
       {
-        id: '9',
+        id: '11',
         link: '/co11ection/interesting-cool-projects',
         title: 'Interesting &amp; cool projects',
       },
       {
-        id: '10',
+        id: '12',
+        link: '/co11ection/a-new-way-to-share-your-notes-unlisted',
+        title: 'A new way to share your notes, unlisted!',
+      },
+      {
+        id: '13',
         link: '/co11ection/changelog',
         title: 'Changelog',
       },
       {
-        id: '11',
+        id: '14',
         link: '/co11ection/you-can-now-upload-images-on-web',
         title: 'You can now upload images on web',
       },
       {
-        id: '12',
+        id: '15',
         link: '/co11ection/support-for-tweets',
         title: 'Support for Tweets',
       },
       {
-        id: '13',
+        id: '16',
         link: '/co11ection/custom-domain-names',
         title: 'Custom domain names',
       },
       {
-        id: '14',
+        id: '17',
         link: '/co11ection/todo-list',
         title: 'Todo list',
       },
       {
-        id: '15',
+        id: '18',
         link: '/co11ection/you-can-publish-your-notes-as-tweets-automatically',
         title: 'You can publish your notes as tweets  automatically',
       },
       {
-        id: '16',
+        id: '19',
         link: '/co11ection/support-for-youtube',
         title: 'Support for YouTube',
-      },
-      {
-        id: '17',
-        link: '/co11ection/improving-sharing-on-social-media',
-        title: 'Improving sharing on social media',
-      },
-      {
-        id: '18',
-        link: '/co11ection/support-for-pencil-kit',
-        title: 'Support for Pencil Kit!',
-      },
-      {
-        id: '19',
-        link: '/co11ection/product-hunt',
-        title: 'Product Hunt',
       },
       ];
       function loadPage()
