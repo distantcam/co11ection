@@ -18,7 +18,7 @@
   "author": "Cam MacFarland",
   "license": "Unlicense",
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy": "^3.1.0",
     "@tailwindcss/typography": "^0.5.16",
     "autoprefixer": "^10.4.21",
     "axios": "^1.9.0",
